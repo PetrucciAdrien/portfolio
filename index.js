@@ -12,10 +12,21 @@ $(document).ready(function(){
     });
 });
 
+let mobile = Boolean("false");
+if( navigator.userAgent.match(/Android/i)
+    || navigator.userAgent.match(/webOS/i)
+    || navigator.userAgent.match(/iPhone/i)
+    || navigator.userAgent.match(/iPad/i)
+    || navigator.userAgent.match(/iPod/i)
+    || navigator.userAgent.match(/BlackBerry/i)
+    || navigator.userAgent.match(/Windows Phone/i)) {
+    mobile = "true";
+}
+
 const scrollToTopButton = document.getElementById('js-top');
 const scrollFunc = () => {
     let y = window.scrollY;
-    if (y > 150) {
+    if (y > 150 && mobile !== "true") {
         scrollToTopButton.className = "top-link show";
     } else {
         scrollToTopButton.className = "top-link hide";
